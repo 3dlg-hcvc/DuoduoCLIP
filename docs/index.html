@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>DuoduoCLIP</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="DuoduoCLIP" />
+<meta name="author" content="default" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="DuoduoCLIP" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="DuoduoCLIP" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"default"},"headline":"DuoduoCLIP","name":"DuoduoCLIP","url":"/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="./assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="DuoduoCLIP" />
+</head>
+<body>
+
+    <!--<header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">DuoduoCLIP</a></div>
+</header>
+-->
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 id="duoduo-clip-efficient-3d-understanding-with-multi-view-images">Duoduo CLIP: Efficient 3D Understanding with Multi-View Images</h1>
+
+<p><a href="https://hanhung.github.io/">Han-Hung Lee<sup>*1</sup></a>, 
+<a href="https://scholar.google.com/citations?user=scUaE38AAAAJ&amp;hl=en">Yiming Zhang<sup>*1</sup></a> and 
+<a href="https://angelxuanchang.github.io/">Angel Xuan Chang<sup>1,2</sup></a></p>
+
+<p><sup>*</sup> Equal Contribution <sup>1</sup> Simon Fraser University <sup>2</sup> Canada-CIFAR AI Chair, Amii</p>
+
+<p><a href="https://github.com/3dlg-hcvc"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub" /></a>
+<a href="https://arxiv.org/"><img src="https://img.shields.io/badge/arXiv-xxx.xxx-b31b1b.svg" height="22.5" /></a></p>
+
+<p><img src="./assets/images/model-param.png" alt="alt text" /></p>
+
+<h2 id="abstract">Abstract</h2>
+
+<blockquote>
+  <p>We introduce Duoduo CLIP, a model for 3D representation learning that learns shape encodings from multi-view images instead of point-clouds. 
+The choice of multi-view images allows us to leverage 2D priors from off-the-shelf CLIP models to facilitate fine-tuning with 3D data. 
+Our approach not only shows better generalization compared to existing point cloud methods, but also reduces GPU requirements and training time. 
+In addition, we modify the model with cross-view attention to leverage information across multiple frames of the object which further boosts performance. 
+Compared to the current SOTA point cloud method that requires 480 A100 hours to train 1 billion model parameters we only require 57 A5000 hours and 87 million parameters.
+Multi-view images also provide more flexibility in use cases compared to point clouds.
+This includes being able to encode objects with a variable number of images, with better performance when more views are used.
+This is in contrast to point cloud based methods, where an entire scan or model of an object is required.
+We showcase this flexibility with object retrieval from images of real-world objects. Our model also achieves better performance in more fine-grained text to shape retrieval, demonstrating better text-and-shape alignment than point cloud based models.</p>
+</blockquote>
+
+<h2 id="model">Model</h2>
+
+<p><img src="./assets/images/model.png" alt="alt text" /></p>
+
+<h2 id="synthetic-retrieval">Synthetic Retrieval</h2>
+
+<p><img src="./assets/images/retrieval-synth.png" alt="alt text" /></p>
+
+<h2 id="real-world-retrieval">Real World Retrieval</h2>
+
+<p><img src="./assets/images/retrieval-real.png" alt="alt text" /></p>
+
+<h2 id="comparison-to-previous-sota">Comparison to Previous SOTA</h2>
+
+<p><img src="./assets/images/objaverse-acc.png" alt="alt text" /></p>
+
+<h2 id="citing">Citing</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@misc{
+}
+</code></pre></div></div>
+
+<h2 id="acknowledgements">Acknowledgements</h2>
+
+<p>This work was funded by a CIFAR AI Chair and a NSERC Discovery Grant.</p>
+
+
+
+  </div>
+
+      </div>
+    </main>
+
+    <!--<footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+        <ul class="contact-list">
+          <li class="p-name">default</li>
+          <li><a class="u-email" href="mailto:default">default</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+-->
+
+  </body>
+
+</html>

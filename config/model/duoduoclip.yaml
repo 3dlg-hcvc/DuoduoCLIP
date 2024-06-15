@@ -1,0 +1,24 @@
+model_name:
+  _target_: src.model.duoduoclip.DuoduoCLIP
+
+network:
+  lambda_text: 1.0
+  lambda_image: 1.0
+  layers_threshold: 0
+  base_name: 'ViT-B-32'
+  pretrained_name: 'laion2b_s34b_b79k'
+
+optimizer:
+  _target_: torch.optim.AdamW
+  lr: 0.00005
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+  T_max: ${trainer.max_epochs}
+  eta_min: 1e-7
+
+loss:
+  flag: ${model.loss.contrastive_loss}
+  contrastive_loss:
+    _target_: src.loss.contrastive_loss.ContrastiveLoss
+    temperature: 2.658859956911438

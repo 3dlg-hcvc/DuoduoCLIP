@@ -1,0 +1,6 @@
+h5py
+wandb
+pillow
+lightning
+hydra-core
+torchmetrics

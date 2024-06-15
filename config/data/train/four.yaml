@@ -1,0 +1,27 @@
+dataloader:
+  batch_size: 200
+  num_workers: 4
+
+dataset: Four
+dataset_path: ${project_root_path}/dataset/data
+
+metadata:
+  base_name: 'ViT-B-32'
+  pretrained_name: 'laion2b_s34b_b79k'
+
+  num_views: [1, 6]
+  clip_feature_dim: 512
+  mv_data_h5: ${data.train.dataset_path}/mv_images.h5
+  model_to_idx: ${data.train.dataset_path}/model_to_idx.json
+  data_list_path: ${project_root_path}/dataset/csv_list/four_model_ids.txt
+  text_data: ${data.train.dataset_path}/ViT-B-32_laion2b_s34b_b79k/text_embeddings.npy
+  vision_data: ${data.train.dataset_path}/ViT-B-32_laion2b_s34b_b79k/image_embeddings.h5
+
+  use_mvimgnet: False
+  mvimgnet_fraction: 4
+  mvimgnet_mode: 'mvimgnet'
+  mvimgnet_list: ${project_root_path}/dataset/csv_list/mvimgnet_model_ids.txt
+  mvpnet_list: ${project_root_path}/dataset/csv_list/mvpnet_train_model_ids.txt
+  mvimgnet_emb_h5: ${data.train.dataset_path}/ViT-B-32_laion2b_s34b_b79k/mvimgnet/mvimgnet_embeddings.h5
+  mvimgnet_mv_data_h5: ${data.train.dataset_path}/ViT-B-32_laion2b_s34b_b79k/mvimgnet/mvimgnet_mv_images.h5
+  mvimgnet_model_to_idx: ${data.train.dataset_path}/ViT-B-32_laion2b_s34b_b79k/mvimgnet/mvimgnet_model_to_idx.json

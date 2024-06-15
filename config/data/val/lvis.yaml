@@ -1,0 +1,24 @@
+dataloader:
+  batch_size: 32
+  num_workers: 4
+
+dataset: LVIS
+dataset_path: ${project_root_path}/dataset/data
+
+metadata:
+  base_name: 'ViT-B-32'
+  pretrained_name: 'laion2b_s34b_b79k'
+
+  num_views: 6
+  mv_data_h5: ${data.train.dataset_path}/mv_images.h5
+  model_to_idx: ${data.train.dataset_path}/model_to_idx.json
+  data_list_path: ${project_root_path}/dataset/csv_list/lvis.csv
+  clip_feat_path: ${data.val.dataset_path}/ViT-B-32_laion2b_s34b_b79k/lvis_class_label_embeddings.npy
+
+evaluator:
+  average: micro
+  task: multiclass
+  num_classes: 1156
+  _target_: torchmetrics.Accuracy
+
+monitor_value: objaverse_lvis_acc_top_1
