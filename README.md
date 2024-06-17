@@ -24,7 +24,7 @@
 
 ## Notes
 
-This is the official initial release for the paper **Duoduo CLIP: Efficient 3D Understanding with Multi-View Images**. In this release we provide evaluation for the LVIS split of Objaverse as well object retrieval from text. We will release the entire data preparation and training codes soon. The detailed list of items are listed in the TODO list below.
+This is the official initial release for the paper **Duoduo CLIP: Efficient 3D Understanding with Multi-View Images**. In this release we provide evaluation for the LVIS split of Objaverse as well object retrieval from text. We will release the entire data preparation and training code soon. See [TODOs](#todos) for items we will add to the repo. The pretrained models as well as model cards will be provided in this [repo](https://huggingface.co/3dlg-hcvc/DuoduoCLIP) and the data [here](https://huggingface.co/datasets/3dlg-hcvc/DuoduoCLIP-data).
 
 ## Environment Setup
 
@@ -51,7 +51,7 @@ conda install -c pytorch -c nvidia faiss-gpu=1.8.0
 
 ### Objaverse LVIS
 
-1. Download the objaverse lvis files for evaluation.
+1. Download the objaverse lvis files (~80GB) for evaluation and placed in the ***dataset/data*** folder.
 ```bash
 python preprocess/download_lvis.py
 ```
@@ -59,7 +59,7 @@ python preprocess/download_lvis.py
 ### Preprocessed Objaverse Embeddings
 We also provide embeddings for each object of the entire objaverse dataset using 12 randomly rendered views for each object.
 
-1. Download the shape embeddings.
+1. Download the shape embeddings (~800M). This includes the shapes embeddings produced by the default model placed under ***dataset/data/objaverse_embeddings/Four_1to6F_bs1600_LT6***.
 ```bash
 python preprocess/download_embeddings.py
 ```
@@ -100,4 +100,4 @@ We thank the authors for their work and releasing their code and weights!
 
 ### Funding
 
-This work was funded by a CIFAR AI Chair and a NSERC Discovery Grant.
+This work was funded by a CIFAR AI Chair, a NSERC Discovery grant, and a CFI/BCKDF JELF grant.
