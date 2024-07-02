@@ -77,8 +77,12 @@ class DuoduoCLIP(pl.LightningModule):
         else:
             raise NotImplementedError
         
+        mv_images = mv_images.to(torch.float16).permute(0, 1, 4, 2, 3) / 255
+        if mv_images.shape[3] != 224 or mv_images.shape[4] != 224:
+            mv_images = F.interpolate(mv_images, size=224, mode='bilinear', align_corners=False)
+
         data_dict = {}
-        data_dict['mv_images'] = (mv_images.to(torch.float16).permute(0, 1, 4, 2, 3) / 255).to(self.device)
+        data_dict['mv_images'] = mv_images.to(self.device)
 
         with torch.no_grad(), torch.cuda.amp.autocast():
             mv_image_features = self(data_dict, is_training=False)["mv_image_features"]
