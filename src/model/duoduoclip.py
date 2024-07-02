@@ -64,28 +64,25 @@ class DuoduoCLIP(pl.LightningModule):
         text = self.tokenizer([input_prompt]).cuda()
         with torch.no_grad(), torch.cuda.amp.autocast():
             text_features = self.duoduoclip.encode_text(text)
-            text_features /= text_features.norm(dim=-1, keepdim=True)
+            text_features = F.normalize(text_features, dim=1)
         return text_features
     
     def encode_image(self, mv_images):
-        # Single view image
+        # Single-view image
         if len(mv_images.shape) == 3:
             mv_images = torch.from_numpy(mv_images)[None, None, ...]
+        # Multi-view image
         elif len(mv_images.shape) == 4:
             mv_images = torch.from_numpy(mv_images).unsqueeze(0)
         else:
             raise NotImplementedError
         
-        mv_images = mv_images.to(torch.float16).permute(0, 1, 4, 2, 3) / 255
-        if mv_images.shape[3] != 224 or mv_images.shape[4] != 224:
-            mv_images = F.interpolate(mv_images, size=224, mode='bilinear', align_corners=False)
-
         data_dict = {}
-        data_dict['mv_images'] = mv_images.to(self.device)
+        data_dict['mv_images'] = (mv_images.to(torch.float16).permute(0, 1, 4, 2, 3) / 255).to(self.device)
 
         with torch.no_grad(), torch.cuda.amp.autocast():
-            mv_image_features = self(data_dict)["mv_image_features"]
-            mv_image_features /= mv_image_features.norm(dim=-1, keepdim=True)
+            mv_image_features = self(data_dict, is_training=False)["mv_image_features"]
+            mv_image_features = F.normalize(mv_image_features, dim=1)
         return mv_image_features
 
     def forward(self, data_dict, is_training=True):

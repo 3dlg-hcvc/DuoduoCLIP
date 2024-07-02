@@ -53,7 +53,7 @@ def main(_cfg):
         text = duoduoclip.tokenizer([input_prompt]).cuda()
         with torch.no_grad(), torch.cuda.amp.autocast():
             text_features = duoduoclip.duoduoclip.encode_text(text)
-            text_features /= text_features.norm(dim=-1, keepdim=True)
+            text_features = F.normalize(text_features, dim=1)
 
         query_emb = F.normalize(text_features, dim=1)
         query_emb = query_emb.cpu().numpy().astype(np.float32)
