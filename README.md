@@ -47,6 +47,33 @@ pip install .
 conda install -c pytorch -c nvidia faiss-gpu=1.8.0
 ```
 
+## Example
+
+```python
+import numpy as np
+from PIL import Image
+
+from src.model.wrapper import get_model
+
+mv_images = Image.open('examples/couch.jpg')
+mv_images = np.asarray(mv_images).reshape(12, 224, 224, 3)
+
+duoduoclip = get_model('Four_1to6F_bs1600_LT6.ckpt', device='cuda')
+text_features = duoduoclip.encode_text('a 3D model of a white couch')
+
+# The model can take multi-view images of shape (F, H, W, 3)
+# (F is number of multi-views, H and W are image resolutions)
+image_features = duoduoclip.encode_image(mv_images)
+similarity = text_features.squeeze() @ image_features.squeeze()
+print(similarity)
+
+# The model can also take single view images of shape (H, W, 3)
+# (H and W are image resolutions)
+image_features = duoduoclip.encode_image(mv_images[0])
+similarity = text_features.squeeze() @ image_features.squeeze()
+print(similarity)
+```
+
 ## Dataset
 
 ### Objaverse LVIS
