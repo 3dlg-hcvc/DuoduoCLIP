@@ -93,6 +93,24 @@ We also provide embeddings for each object of the entire objaverse dataset using
 python preprocess/download_embeddings.py
 ```
 
+### Training Data
+
+### Four Dataset
+Note this will take a large amount of disk space to store as there is about 800k renderings of objects each with 12 views at resolution 224x224.
+
+1. Download the multi-view objaverse renderings from **[Zero123](https://github.com/cvlab-columbia/zero123)** (~1.5TB) and uncompress.
+```bash
+wget https://tri-ml-public.s3.amazonaws.com/datasets/views_release.tar.gz
+```
+2. Download supplement multi-view images (~133GB) not included in Zero123.
+```bash
+python preprocess/download_supplement.py
+```
+3. Merge multi-view images into an h5 file. Resulting h5 file is ~1.5TB.
+```bash
+python preprocess/combine_four_h5.py --zero123_path /path/to/uncompressed/views_release
+```
+
 ## Evaluation
 
 ### Objaverse

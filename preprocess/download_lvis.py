@@ -23,7 +23,3 @@ dest = os.path.join(output_folder, 'lvis_images.h5')
 src = os.path.join(output_folder, 'lvis_images.h5_part_*')
 command = "cat {} > {}".format(src, dest)
 result = subprocess.run(command, shell=True, check=True)
-
-# Delete the split files
-# os.remove(os.path.join(output_folder, 'lvis_images.h5_part_aa'))
-# os.remove(os.path.join(output_folder, 'lvis_images.h5_part_ab'))
