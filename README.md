@@ -102,7 +102,7 @@ Note this will take a large amount of disk space to store as there is about 800k
 ```bash
 wget https://tri-ml-public.s3.amazonaws.com/datasets/views_release.tar.gz
 ```
-2. Download supplement multi-view images (~133GB) not included in Zero123.
+2. Download supplement multi-view images (~160GB) not included in Zero123 as well as image and text embeddings used in training.
 ```bash
 python preprocess/download_supplement.py
 ```
