@@ -4,7 +4,7 @@ model_name:
 network:
   lambda_text: 1.0
   lambda_image: 1.0
-  layers_threshold: 0
+  layers_threshold: 6
   base_name: 'ViT-B-32'
   pretrained_name: 'laion2b_s34b_b79k'
 
