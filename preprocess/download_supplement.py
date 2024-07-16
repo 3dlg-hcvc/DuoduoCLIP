@@ -5,6 +5,7 @@ from huggingface_hub import hf_hub_download
 
 output_folder = 'dataset/data'
 os.makedirs(output_folder, exist_ok=True)
+os.makedirs(os.path.join(output_folder, 'ViT-B-32_laion2b_s34b_b79k'), exist_ok=True)
 
 # Download files from huggingface hub
 model_to_idx = hf_hub_download(repo_id='3dlg-hcvc/DuoduoCLIP-data', filename='training/four/model_to_idx.json', repo_type="dataset")
@@ -21,8 +22,8 @@ shutil.move(os.path.realpath(supplement_split_1), os.path.join(output_folder, 's
 shutil.move(os.path.realpath(supplement_split_2), os.path.join(output_folder, 'supplement_mv_images_part_ab'))
 shutil.move(os.path.realpath(supplement_split_3), os.path.join(output_folder, 'supplement_mv_images_part_ac'))
 shutil.move(os.path.realpath(supplement_model_to_idx), os.path.join(output_folder, 'supplement_model_to_idx.json'))
-shutil.move(os.path.realpath(text_embeddings), os.path.join(output_folder, 'text_embeddings.npy'))
-shutil.move(os.path.realpath(image_embeddings), os.path.join(output_folder, 'image_embeddings.h5'))
+shutil.move(os.path.realpath(text_embeddings), os.path.join(output_folder, 'ViT-B-32_laion2b_s34b_b79k', 'text_embeddings.npy'))
+shutil.move(os.path.realpath(image_embeddings), os.path.join(output_folder, 'ViT-B-32_laion2b_s34b_b79k', 'image_embeddings.h5'))
 
 # Merge to make complete supplement h5 file
 dest = os.path.join(output_folder, 'supplement_mv_images.h5')
