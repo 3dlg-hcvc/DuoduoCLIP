@@ -127,6 +127,30 @@ python test_objaverse_lvis.py ckpt_path=Four_1to6F_bs1600_LT6.ckpt
 python text_retrieval.py ckpt_path=Four_1to6F_bs1600_LT6.ckpt
 ```
 
+## Training
+
+### Four
+
+- Train model with command. (Note this requires 4 gpus with at least 24GB of memory)
+```bash
+python train.py experiment_name=Four_1to6F_bs1600_LT6 trainer.devices=4
+```
+
+- Important Flags
+```python
+# Number of GPUs
+trainer.devices=4
+
+# Training batch size
+data.train.dataloader.batch_size=400
+
+# Number of multi-views to sample during training
+"data.train.metadata.num_views=[1, 6]"
+
+# Layer threshold to train (here all layers after and including the 6th layer will be trained, set to 0 to train all layers)
+model.network.layers_threshold=6
+```
+
 ## TODOs
 
 - [ ] Add data preparation code for Four, MVImgNet and Text2Shape.
