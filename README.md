@@ -169,6 +169,18 @@ model.network.layers_threshold=6
 
 We thank the authors for their work and releasing their code and weights!
 
+## Citing
+```
+@misc{lee2024duoduo,
+      title={Duoduo CLIP: Efficient 3D Understanding with Multi-View Images}, 
+      author={Han-Hung Lee and Yiming Zhang and Angel X. Chang},
+      year={2024},
+      eprint={2406.11579},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
+
 ### Funding
 
 This work was funded by a CIFAR AI Chair, a NSERC Discovery grant, and a CFI/BCKDF JELF grant.
