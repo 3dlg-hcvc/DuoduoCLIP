@@ -162,7 +162,7 @@ model.network.layers_threshold=6
 # Enable with mvimgnet training
 data.train.metadata.use_mvimgnet=True
 
-# Set to 12 for mvpnet training and 12 for mvimgnet
+# Set to 12 for mvpnet training and 4 for mvimgnet
 data.train.metadata.mvimgnet_fraction=4
 
 # Choose to either train with ['mvpnet', 'mvimgnet']
