@@ -111,6 +111,10 @@ python preprocess/download_supplement.py
 python preprocess/combine_four_h5.py --zero123_path /path/to/uncompressed/views_release
 ```
 
+### MVImgNet Dataset
+
+Please see this [README](https://github.com/3dlg-hcvc/DuoduoCLIP/tree/main/preprocess/MVImgNetPreprocess) for preprocessing of MVImgNet data.
+
 ## Evaluation
 
 ### Objaverse
@@ -149,6 +153,20 @@ data.train.dataloader.batch_size=400
 
 # Layer threshold to train (here all layers after and including the 6th layer will be trained, set to 0 to train all layers)
 model.network.layers_threshold=6
+```
+
+### MVImgNet
+
+- Enable MVImgNet training with these flags
+```python
+# Enable with mvimgnet training
+data.train.metadata.use_mvimgnet=True
+
+# Set to 12 for mvpnet training and 12 for mvimgnet
+data.train.metadata.mvimgnet_fraction=4
+
+# Choose to either train with ['mvpnet', 'mvimgnet']
+data.train.metadata.mvimgnet_mode='mvimgnet'
 ```
 
 ## TODOs
