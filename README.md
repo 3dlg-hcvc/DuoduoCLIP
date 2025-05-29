@@ -181,12 +181,6 @@ data.train.metadata.mvimgnet_fraction=4
 data.train.metadata.mvimgnet_mode='mvimgnet'
 ```
 
-## TODOs
-
-- [ ] Add data preparation code for Four, MVImgNet and Text2Shape.
-- [ ] Add training code for all setting in the paper.
-- [ ] Add evaluation scripts for MVPNet and Text2Shape.
-
 ## Acknowledgements
 
 ### Code
