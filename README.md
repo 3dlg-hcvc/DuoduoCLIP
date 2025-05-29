@@ -95,6 +95,8 @@ python preprocess/download_embeddings.py
 
 ### Training Data
 
+**[Note]** This is not required for evaluating on objaverse lvis or text retrieval of 3D assets.
+
 ### Four Dataset
 Note this will take a large amount of disk space to store as there is about 800k renderings of objects each with 12 views at resolution 224x224.
 
@@ -122,6 +124,16 @@ Please see this [README](https://github.com/3dlg-hcvc/DuoduoCLIP/tree/main/prepr
 1. Run the objaverse lvis evaluation over multiple view settings. The model here is trained with 1 to 6 frames sampled during training with last 6 layers trainable.
 ```bash
 python test_objaverse_lvis.py ckpt_path=Four_1to6F_bs1600_LT6.ckpt
+```
+
+### MVImgNet
+**[Note]** Please follow the above steps for processing the MVImgNet dataset first.
+```bash
+# Trained on MVPNet
+python test_mvpnet.py ckpt_path=Four_MVPNet_1to6F_bs1600_LT6.ckpt
+
+# Trained on MVImgNet
+python test_mvpnet.py ckpt_path=Four_MVImgNet_1to6F_bs1600_LT6.ckpt
 ```
 
 ## Retrieval
